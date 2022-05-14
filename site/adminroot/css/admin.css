@@ -1,0 +1,94 @@
+/*==================================================================================================*/
+/*  All pages that wish to use this style sheet should include the following code in the header 		*/
+/*				<link REL="StyleSheet" TYPE="text/css" HREF="/zmen/adminroot/css/admin.css"> 							*/
+/*==================================================================================================*/
+
+/* BODY tag style: General for all admin pages that contain the above reference */
+		body 					{
+									font-family: Arial, Helvetica, sans-serif;
+						 			font-size:12px; 
+									}
+/*--------------------------------------------------------------------------------------------------*/
+/* Style class: Text formatting for required fields labels */
+		.required			{
+									color: #AA3333;
+									/*font-weight:bold*/
+									}
+/*--------------------------------------------------------------------------------------------------*/
+/* Style class: Text formatting for field examples and explainations */
+		.example 			{
+									font-style: italic;
+									}
+/*--------------------------------------------------------------------------------------------------*/
+/* Style class: Text formatting for field examples and explainations */
+		.sec_header		{
+									font-style: normal;
+									font-weight: bold;
+									font-size: 14px;
+									}
+/*--------------------------------------------------------------------------------------------------*/
+/* Style class: Queue button color */
+		.checkout			{
+									background-color:#0033aa;
+									width:221px;
+									color:#ffffff;
+									font-weight:bold;
+									font-size:12px
+									}
+/*--------------------------------------------------------------------------------------------------*/
+/* Style class: Queue button color */
+		.complete			{
+									background-color:#006600;
+									width:97px;
+									color:#ffffff;
+									font-weight:bold;
+									font-size:12px
+									}
+/*--------------------------------------------------------------------------------------------------*/
+/* Style class: Queue button color */
+		.incomplete		{
+									background-color:#aa0000;
+									width:120px;
+									color:#ffffff;
+									font-weight:bold;
+									font-size:12px
+									}
+/*--------------------------------------------------------------------------------------------------*/
+/* Style class: nav-menu headings */
+		.nav_header		{
+									background-color:#5CA758;
+									color:#ffff00;
+									font-weight:bold;
+									font-size:12px
+									}
+/*--------------------------------------------------------------------------------------------------*/
+/* Style class: nav-menu sub-headings */
+		.nav_subhead	{
+									background-color:#ffffff;
+									color:#000000;
+									font-weight:bold;
+									font-size:12px;
+									}
+/*--------------------------------------------------------------------------------------------------*/
+/* Style class: nav-menu content area */
+		.nav_content	{
+									background-color:#ffffff;
+									}
+/*--------------------------------------------------------------------------------------------------*/
+/* Style class: nav-menu links */
+		.nav_link			{
+									text-decoration:none;
+									font-size:12px;
+									font-weight:normal;
+									color:#000000
+									}
+/*--------------------------------------------------------------------------------------------------*/
+/* Style class: nav-menu links */
+		.nav_link:hover	{
+									background-color:#ffff00;
+									color:#000000;
+									font-weight:bold;
+									font-size:11px
+									}
+/*--------------------------------------------------------------------------------------------------*/
+

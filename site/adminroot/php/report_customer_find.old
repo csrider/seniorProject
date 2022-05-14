@@ -1,0 +1,160 @@
+<?php 
+session_start();
+require_once 'fns_database.php';
+$admin_user = $_SESSION['admin_user'];
+require_once 'fns_validate.php';
+admin_check($admin_user);
+
+//the following code will get the customer's information, for display in the report
+$result = dbconnect_newmethod()->query("SELECT * FROM customer, customer_type, pay_method where '".$_POST['find_cust_hphone']."' = cust_hphone 
+																			  and customer.ctype_id = customer_type.ctype_id
+																			  and customer.paym_id = pay_method.paym_id");
+$num_results = $result->num_rows;
+$row = $result->fetch_assoc();
+
+//the following code will get the customer's name, for display in the title bar
+$custname = $row['cust_fname'].' '.$row['cust_lname'];
+?>
+
+<!-- saved from url=(0022)http://internet.e-mail -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Customer Report:&nbsp;<?php echo $custname; ?></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+style1 {font-size: 18px}
+style4 {font-size: 14px; font-weight:bold}
+table_content {font-size:12px}
+body,td,th {
+	color: #000000;
+}
+body {
+	background-color: #FFFFFF;
+}
+style6 {font-size: 12px}
+-->
+</style>
+</head>
+<body>
+<div align="right">
+  <table width="100%"  border="0" bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+    <tr>
+      <td width="50%" height="23"><div align="left"><span class="style6">ADMIN USER :</span>
+      <?php
+	  	echo $admin_user;
+	  ?>
+      </div></td>
+      <td width="50%"><div align="right" class="style6"><?php print date("d M Y") ?></div></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><div align="right" class="style6"><?php print date("g:i") ?></div></td>
+    </tr>
+  </table>
+  <table width="100%"  border="0">
+    <tr>
+      <td><div align="center" class="style1">Individual Customer Billing Information</div></td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+</div>
+<div align="center" class="style1">
+  <table width="25%"  border="0" cellpadding="3" cellspacing="3">
+    <tr>
+      <td align="right"><span class="style4">First Name:</span></td>
+	  <?php echo '<td align = "left">' .$row['cust_fname']. '</td>'; ?>
+    </tr>
+	<tr>
+		<td align="right"><span class="style4">Last Name:</span></td>
+		<?php echo '<td align = "left">' .$row['cust_lname']. '</td>'; ?>
+	</tr>
+	
+	<?php if($row['cust_minitial'] != ''){ echo'
+	<tr>
+		<td align="right"><span class="style4">Initial:</span></td>
+		<td align = "left"> "'.$row['cust_minitial'].'" </td>
+	</tr>
+	';}?>
+	
+	<?php if($row['cust_suffix'] != ''){ echo'
+	<tr>
+		<td align="right"><span class="style4">Suffix:</span></td>
+		<td align = "left"> "'.$row['cust_suffix'].'" </td>
+	</tr>
+	';}?>
+	
+	<tr>
+		<td align="right"><span class="style4">Address:</span></td>
+		<?php echo '<td align = "left">' .$row['cust_address1']. '</td>'; ?>
+	</tr>
+	
+	<?php if($row['cust_address2'] != ''){ echo'
+	<tr>
+		<td align="right"><span class="style4">Address:</span></td>
+		<td align = "left"> "'.$row['cust_address2'].'" </td>
+	</tr>
+	';}?>
+	
+	<tr>
+		<td align="right"><span class="style4">City:</span></td>
+		<?php echo '<td align = "left">' .$row['cust_city']. '</td>'; ?>
+	</tr>
+	
+	<tr>
+		<td align="right"><span class="style4">State:</span></td>
+		<?php echo '<td align = "left">' .$row['cust_state']. '</td>'; ?>
+	</tr>
+	
+	<tr>
+		<td align="right"><span class="style4">Zip:</span></td>
+		<?php echo '<td align = "left">' .$row['cust_zip']. '</td>'; ?>
+	</tr>
+	
+	<tr>
+		<td align="right"><span class="style4">Home Phone:</span></td>
+		<?php echo '<td align = "left">' .$row['cust_hphone']. '</td>'; ?>
+	</tr>
+	
+	<?php if($row['cust_wphone'] != ''){ echo'
+	<tr>
+		<td align="right"><span class="style4">Work Phone:</span></td>
+		<td align = "left"> "'.$row['cust_wphone'].'" </td>
+	</tr>
+	';}?>
+	
+	<?php if($row['cust_mphone'] != ''){ echo'
+	<tr>
+		<td align="right"><span class="style4">Mobile Phone:</span></td>
+		<td align = "left"> "'.$row['cust_mphone'].'" </td>
+	</tr>
+	';}?>
+	
+	<tr>
+		<td align="right"><span class="style4">Pay Method:</span></td>
+		<?php echo '<td align = "left">' .$row['paym_name']. '</td>'; ?>
+	</tr>
+	
+	<?php if($row['cust_tax_id'] != ''){ echo'
+	<tr>
+		<td align="right"><span class="style4">Tax ID:</span></td>
+		<td align = "left"> "'.$row['cust_tax_id'].'" </td>
+	</tr>
+	';}?>
+	
+	<?php if($row['cust_created'] != ''){ echo'
+	<tr>
+		<td align="right"><span class="style4">Customer Created:</span></td>
+		<td align = "left"> "'.$row['cust_created'].'" </td>
+	</tr>
+	';}?>
+	
+	
+
+  </table>
+</div>
+<div align="justify"></div>
+</body>
+</html>

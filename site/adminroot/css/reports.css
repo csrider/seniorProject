@@ -1,0 +1,23 @@
+/* Report column headings */
+.col_head 	{
+						font-size: 14px; 
+						font-weight:bold
+						}
+						
+/* Page header (time, username, etc.) */
+.page_head 	{
+						font-size: 12px 
+						}
+						
+/* Table content */
+.rpt_name 	{
+						font-size: 20px;
+						font-weight:bold
+						}
+						
+/* Page header (time, username, etc.) */
+.table_content 	{
+								font-size: 12px 
+								}
+
+
